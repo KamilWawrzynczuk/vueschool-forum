@@ -1,6 +1,6 @@
-import PageHome from '@/components/PageHome'
-import PageThreadShow from '@/components/PageThreadShow'
-import PageNotFound from '@/components/PageNotFound'
+import PageHome from '@/pages/PageHome'
+import ThreadShow from '@/pages/ThreadShow'
+import NotFound from '@/pages/NotFound'
 import { createRouter, createWebHistory } from 'vue-router'
 import sourceData from '@/data.json'
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/thread/:id',
     name: 'ThreadShow',
-    component: PageThreadShow,
+    component: ThreadShow,
     props: true,
     beforeEnter (to, from, next) {
       // check if thread exists
@@ -25,7 +25,7 @@ const routes = [
           name: 'NotFound',
           // This is used to not change path that not exists. To be able to still see it in browser
           params: { pathMatch: to.path.substring(1).split('/') },
-          // this will not remove query variables and hash
+          // this will not remove query and hash
           query: to.query,
           hash: to.hash
         })
@@ -36,7 +36,7 @@ const routes = [
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: PageNotFound
+    component: NotFound
   }
 ]
 
