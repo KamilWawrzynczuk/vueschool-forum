@@ -4,10 +4,10 @@
         <div class="thread">
             <div>
                 <p>
-                    <a href="#">{{ thread.title  }}</a>
+                    <routerLink :to="{name: 'ThreadShow' , params: {id: thread.id}}">{{ thread.title  }}</routerLink>
                 </p>
                 <p class="text-faded text-xsmall">
-                    By <a href="#l">{{userById(thread.userId).name}}</a>, {{ thread.publishedAt }}.
+                    By <a href="`">{{userById(thread.userId).name}}</a>, {{ thread.publishedAt }}.
                 </p>
             </div>
 
@@ -36,7 +36,7 @@ import sourceData from '@/data.json'
 export default {
   props: {
     thread: {
-      type: Array,
+      type: Object,
       required: true
     }
   },
