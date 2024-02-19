@@ -1,19 +1,19 @@
 <template>
  <h1>Welcome to the Forum</h1>
- <h2 class="list-title">Threads</h2>
- <ThreadList v-for="thread in threads" :key="thread.id" :thread="thread"/>
+ <ForumList :forums="forums" :categories="categories"/>
 </template>
 
 <script>
 import sourceData from '@/data.json'
-import ThreadList from '@/components/ThreadList'
+import ForumList from '@/components/ForumList'
 export default {
   components: {
-    ThreadList
+    ForumList
   },
   data () {
     return {
-      threads: sourceData.threads
+      forums: sourceData.forums,
+      categories: sourceData.categories
     }
   }
 }

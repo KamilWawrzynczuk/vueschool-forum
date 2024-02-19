@@ -1,13 +1,15 @@
 <template>
   <div class="col-full">
-    <div class="thread-list">
+    <br/>
+    <h2 class="list-title">Threads</h2>
+    <div class="thread-list" v-for="thread in threads" :key="thread.id" :thread="thread">
         <div class="thread">
             <div>
                 <p>
                     <routerLink :to="{name: 'ThreadShow' , params: {id: thread.id}}">{{ thread.title  }}</routerLink>
                 </p>
                 <p class="text-faded text-xsmall">
-                    By <a href="`">{{userById(thread.userId).name}}</a>, {{ thread.publishedAt }}.
+                    By <a href="`">{{userById(thread.userId).name}}</a>, <AppDate :timestamp="thread.publishedAt"/>.
                 </p>
             </div>
 
@@ -23,7 +25,9 @@
                     <p class="text-xsmall">
                         <a href="#">{{ userById(thread.userId).name }}</a>
                     </p>
-                    <p class="text-xsmall text-faded">{{ thread.publishedAt }}</p>
+                    <p class="text-xsmall text-faded">
+                      <AppDate :timestamp="thread.publishedAt" />
+                    </p>
                 </div>
             </div>
         </div>
@@ -33,9 +37,10 @@
 
 <script>
 import sourceData from '@/data.json'
+
 export default {
   props: {
-    thread: {
+    threads: {
       type: Object,
       required: true
     }

@@ -1,4 +1,5 @@
 <template>
+    <br/>
     <div class="cos-full">
         <form @submit.prevent="save">
             <div class="form-group">
